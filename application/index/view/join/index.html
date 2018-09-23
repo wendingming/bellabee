@@ -1,0 +1,127 @@
+{include file='public/page_header.htm'}
+<body>
+{include file='public/page_nav.htm'}
+<div class="main">
+    <!--BannerIn-->
+    <div class="infoban"><img src="/public/static/uploads/banner_source/20170918160119cf.jpg" height="249" alt="加盟代理" title="加盟代理" /></div>
+
+    <!--BannerIn-->
+    <div class="neiye">
+        <div class="wrap2">
+            <!--left-->
+            <div class="left">
+                <div class="lnav">
+                    <ul>
+                        {foreach name='nav_join' item='v'}
+                        <li><a href="/Index/join/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+
+            <!--right-->
+            <div class="right1">
+                <div class="site">
+                    <span style="padding-left: 0;">当前位置:</span><a href="/">首页</a>&gt;<a href="/Index/join/index/id/53">加盟代理</a>&gt;<span style="color: #dd0083;"> {$data.cat_name}</span>
+                </div>
+                <div class="div_clear"></div>
+                <div class="protabjoin">
+                    <!--Ptblist-->
+                    <div class="protablist">
+                        <ul>
+                            <?php $ii=0; ?>
+                            {foreach name='nav_join' item='v'}
+                            <li<?php if($v['cat_id']==$id){ echo ' class="hover"';} ?>><a href="/Index/join/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
+                <div class="aboutban1">
+                    <?php
+                  $content = str_replace(' src="',' src="http://www.bellabee.cn/',$data['content']);
+                  echo($content);
+                  ?>
+                </div>
+            </div>
+            <div class="div_clear"></div>
+            <div class="protab">
+                <!--Ptblist-->
+                <div class="protablist">
+                    <ul>
+                        <li class="hover">提交留言</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="protabcon">
+                <div class="protabcon1">
+                    <form name="join" action="/Index/join/act_add_message" method="post">
+                        <input type="hidden" name="id" value="{$id}">
+                        <table border="0" align="left" width="800">
+                            <tbody><tr>
+                                <td align="right" width="9%">联系人：</td>
+                                <td width="35%"><input type="text" name="user_name" id="user_name">*</td>
+                                <td align="right" width="13%">联系电话：</td>
+                                <td width="43%"><input type="text" name="user_tel" id="user_tel">*</td>
+                            </tr>
+                            <tr>
+                                <td align="center">QQ：</td>
+                                <td><input type="text" name="user_qq">(选填)</td>
+                                <td align="right">代理区域：</td>
+                                <td><input type="text" name="user_qy" id="user_qy">*</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><table border="0" align="left" width="100%">
+                                    <tbody><tr>
+                                        <td align="right">内容：</td>
+                                        <td><textarea name="user_content" style="width:400px;height:100px;font-size:12px" id="message"></textarea></td>
+                                    </tr>
+                                    </tbody></table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+                                    <input type="submit" value="提交留言" onclick="return check_join();">
+                                    <input type="reset" value="重新填写">
+                                </td>
+                            </tr>
+                            </tbody></table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script language="javascript" type="text/javascript">
+    function check_join()
+    {
+
+        if(document.getElementById("user_name").value=="")
+        {
+            alert("请填写联系人");
+            document.getElementById("user_name").focus();
+            return false;
+        }
+        if(document.getElementById("user_tel").value=="")
+        {
+            alert("请填写联系电话");
+            document.getElementById("user_tel").focus();
+            return false;
+        }
+        if(document.getElementById("user_qy").value=="")
+        {
+            alert("请填写代理区域");
+            document.getElementById("user_qy").focus();
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
+</script>
+{include file='public/page_foot.htm'}
+</body>
+</html>

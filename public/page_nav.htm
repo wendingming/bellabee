@@ -1,0 +1,129 @@
+<div class="head">
+    <div class="headtop">
+        <div class="wrap">
+            <!--下拉效果1-->
+
+            <!--下拉效果1 end-->
+            <div class="headnav">
+                <a href="/">返回首页</a>|<a href="javascript:void(0);" onclick="AddToFavorite();">加入收藏</a>
+            </div>
+        </div>
+    </div>
+    <div class="headbtm">
+        <div class="wrap">
+            <h1 class="logo">
+                <a href="/"><img src="/public/static/themes/index/images/logo.jpg" width="123px" height="67px" alt="" title="" /></a>
+            </h1>
+            <div class="menu" id="lihover">
+                <ul>
+                    <li><a class="menu1" href="/Index/story/index/id/15"></a>
+                        <div class="navbox">
+                            <span class="ico1"><img src="/public/static/themes/index/images/ico1.gif" alt="" title="" /></span>
+                            <div class="pngbg">&nbsp;</div>
+                            <ul class="navson">
+                                {foreach name='nav_about' item='v'}
+                                <li><a href="/Index/story/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="menu2" href="/Index/category/index/id/1"></a>
+                        <div class="navbox">
+                            <span class="ico1"><img src="/public/static/themes/index/images/ico1.gif" alt="" title="" /></span>
+                            <div class="pngbg">&nbsp;</div>
+                            <ul class="navson">
+                                {foreach name='nav_category' item='v'}
+                                <li><a href="/Index/category/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="menu3" href="/Index/article/index/id/10"></a>
+                        <div class="navbox">
+                            <span class="ico1"><img src="/public/static/themes/index/images/ico1.gif" alt="" title="" /></span>
+                            <div class="pngbg">&nbsp;</div>
+                            <ul class="navson">
+                                {foreach name='nav_classroom_child' item='v'}
+                                <li><a href="/Index/article/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="menu4" href="/Index/element/index"></a>
+                        <div class="navbox">
+                            <span class="ico1"><img src="/public/static/themes/index/images/ico1.gif" alt="" title="" /></span>
+                            <div class="pngbg">&nbsp;</div>
+                            <ul class="navson">
+                                <li><a href="/Index/element/index">植物元素表</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="menu5" href="/Index/join/index/id/76"></a>
+                        <div class="navbox">
+                            <span class="ico1"><img src="/public/static/themes/index/images/ico1.gif" alt="" title="" /></span>
+                            <div class="pngbg">&nbsp;</div>
+                            <ul class="navson">
+                                {foreach name='nav_join' item='v'}
+                                <li><a href="/Index/join/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                                {/foreach}
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="menu6" href="/Index/category/index"></a>
+                        <div class="navbox">
+                            <span class="ico1"><img src="/public/static/themes/index/images/ico1.gif" alt="" title="" /></span>
+                            <div class="pngbg">&nbsp;</div>
+                            <ul class="navson">
+                                <li>
+                                    <form id="searchForm" name="searchForm" method="get" action="/Index/category/index" onsubmit="return checkSearchForm()">
+                                        <input maxlength="20" style="width:80px" name="keywords" id="keywords" value="商品关键字" type="text" onfocus="inputAutoClear(this)">
+                                        <button type="submit">搜 索</button> <input type="hidden" value="newsearch" name="shopf" onclick="document.getElementById('searchForm').submit();">
+                                    </form>
+                                    <script type="text/javascript">
+                                        <!--
+                                        //输入框状态
+                                        function inputAutoClear(ipt)
+                                        {
+                                            ipt.onfocus=function()
+                                            {if(this.value==this.defaultValue){this.value='';}};
+
+                                            ipt.onblur=function()
+                                            {if(this.value==''){this.value=this.defaultValue;}};
+
+                                            ipt.onfocus();
+                                        }
+                                        function checkSearchForm()
+                                        {
+                                            if(document.getElementById('keyword').value)
+                                            {
+                                                return true;
+                                            }
+                                            else
+                                            {
+                                                alert("请输入搜索关键字");
+                                                return false;
+                                            }
+                                        }
+                                        //-->
+                                    </script>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/public/static/themes/index/js/NavHeader.js" type="text/javascript"></script>
+<script type="text/javascript">    navFun()</script>
+<script type="text/javascript">
+    $(function () {
+        $('.pngbg').each(function () {
+            var s = $(this).children('ul').children('li').size();
+            var h = $(this).parent('.navbox').height();
+            $(this).height(h + (s * 22) + 22);
+        });
+    });
+</script>
+</script>

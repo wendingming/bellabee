@@ -1,0 +1,134 @@
+{include file='public/page_header.htm'}
+<body>
+{include file='public/page_nav.htm'}
+<style>
+    .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}
+    .pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}
+    .pagination .active{background-color: #dd1a20;color: #fff;}
+    .pagination .disabled{color:#aaa;}
+</style><!--单品介绍切换图片样式-->
+<link href="/public/static/themes/index/css/products.css" rel="stylesheet" type="text/css" />
+<script src="/public/static/themes/index/js/products.js" type="text/javascript"></script>
+<!--放大镜-->
+<link href="/public/static/themes/index/css/jqzoom.css" rel="stylesheet" type="text/css" />
+<script src="/public/static/themes/index/js/jqzoom.pack.1.0.1.js" type="text/javascript" charset="GB2312"></script>
+<script type="text/javascript">
+    $(function () {
+        var options =
+        {
+            zoomWidth: 300,
+            zoomHeight: 366,
+            showEffect: 'show',
+            hideEffect: 'fadeout',
+            fadeoutSpeed: 'slow',
+            title: false
+        }
+        $(".jqzoom").jqzoom(options);
+    })
+</script>
+<!--放大镜-->
+<!-- main -->
+<div class="main">
+    <!--BannerIn-->
+    <div class="infoban"><img src="/public/static/uploads/banner_source/2017091813561454.jpg" height="249" alt="产品家园" title="产品家园" /></div>
+
+    <!--BannerIn-->
+    <div class="neiye">
+        <div class="wrap1">
+            <div class="site">
+                <span style="padding-left: 0;">当前位置:</span><a href="/">首页</a>&gt;
+                <a href="/Index/category/index/id/{$data_cat.cat_id}">{$data_cat.cat_name}</a>&gt;
+                <span style="color: #dd0083;">{$data.goods_name}</span>
+            </div>
+            <div class="pleft">
+                <div class="bigImg">
+                    <a id="veryBig" class="jqzoom" href="http://www.bellabee.cn/{$data.goods_thumb}" style="border:1px solid #fff;">
+                        <img id="Big" src="http://www.bellabee.cn/{$data.goods_thumb}" style="width:300px; height:366px;" alt="" title="" />
+                    </a>
+                </div>
+                <div class="sliderbox">
+                    <div id="btn-left" class="arrow-btn dasabled"></div>
+                    <div id="thumbnail" class="slider">
+                        <ul>
+                            <li class="current">
+                                <a onmouseover="show_goods_image('http://www.bellabee.cn/{$data.goods_thumb}', 'http://www.bellabee.cn/{$data.goods_thumb}');">
+                                    <img alt="{$data.goods_name}" title="{$data.goods_name}" src="http://www.bellabee.cn/{$data.goods_thumb}" width="64" height="72">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="btn-right" class="arrow-btn"></div>
+                </div>
+            </div>
+            <div class="pright yahei">
+                <div class="info">
+                    <h1>{$data.goods_name}</h1>
+                    <dl>
+                        <dt>产品介绍：</dt>
+                        <dd>
+                            <ul>
+
+                            </ul>
+                            <p>&nbsp;
+                                {$data.seller_note}
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+                <!--<a href="http://s.click.taobao.com/S38W9ex" class="shop" target="_blank"
+                    title="进入商城">
+                    <img src="images/entershop.jpg" alt="进入商城" title="进入商城" />
+                </a>-->
+            </div>
+            <div class="div_clear"></div>
+            <div class="site">
+                <?php
+              $content = str_replace(' src="',' src="http://www.bellabee.cn/',$data['goods_desc']);
+              echo($content);
+              ?>
+            </div>
+            <div class="protab">
+                <!--Ptblist-->
+                <div class="protablist">
+                    <ul>
+                        <li class="hover">相关元素</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="protabcon">
+                <div class="protabcon1">
+                    <?php $ii=0; ?>
+                    <?php $jj=0; ?>
+                    {foreach name='data_element' item='v'}
+                    <?php $ii++;$jj++; ?>
+                    <?php
+                            if($ii==1){
+                                echo '<ul class="prolist">';
+                    }
+                    if($ii==3){
+                    $style_str=' style="margin:0px;"';
+                    }else{
+                    $style_str='';
+                    }
+                    ?>
+                    <li{$style_str}><a href="/Index/element/show/id/{$v.element_id}" title="{$v.element_name}" target="_blank">
+                    <img src="http://www.bellabee.cn/data/elementlogo/{$v.element_logo}" width="173" height="211" alt="{$v.element_name}" title="{$v.element_name}" />
+                    <div class="proname">{$v['element_name']|mb_substr=0,15,'utf-8'}<br /></div>
+                </a></li>
+                    <?php
+                            if($ii==3 || $jj==count($data_element)){
+                                echo '</ul>';
+                    $ii=0;
+                    }
+                    ?>
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- main end -->
+{include file='public/page_foot.htm'}
+</body>
+</html>

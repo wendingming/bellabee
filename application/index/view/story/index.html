@@ -1,0 +1,40 @@
+{include file='public/page_header.htm'}
+<body>
+{include file='public/page_nav.htm'}
+<div class="main">
+    <!--BannerIn-->
+    <div class="infoban"><img src="/public/static/uploads/banner_source/20170918160119cf.jpg" height="249" alt="关于我们" title="关于我们" /></div>
+
+    <!--BannerIn-->
+    <div class="neiye">
+        <div class="wrap2">
+            <!--left-->
+            <div class="left">
+                <div class="lnav">
+                    <ul>
+                        {foreach name='nav_about' item='v'}
+                        <li><a href="/Index/story/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+
+            <!--right-->
+            <div class="right1">
+                <div class="site">
+                    <span style="padding-left: 0;">当前位置:</span><a href="/">首页</a>&gt;<a href="/Index/story/index/id/15">关于我们</a>&gt;<span style="color: #dd0083;"> {$data.cat_name}</span>
+                </div>
+                <div class="aboutban1">
+                    <?php
+                  $content = str_replace(' src="',' src="http://www.bellabee.cn/',$data['content']);
+                  echo($content);
+                  ?>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{include file='public/page_foot.htm'}
+</body>
+</html>

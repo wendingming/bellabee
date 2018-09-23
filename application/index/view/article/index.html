@@ -1,0 +1,84 @@
+{include file='public/page_header.htm'}
+<body>
+{include file='public/page_nav.htm'}
+<style>
+    .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}
+    .pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}
+    .pagination .active{background-color: #dd1a20;color: #fff;}
+    .pagination .disabled{color:#aaa;}
+</style>
+<!-- main -->
+<div class="main">
+    <!--BannerIn-->
+    <div class="infoban"><img src="/public/static/uploads/banner_source/20170915161500e5.jpg" height="249" alt="新闻动态" title="新闻动态" /></div>
+
+    <!--BannerIn-->
+    <div class="neiye">
+        <div class="wrap2">
+            <!--left-->
+            <div class="left">
+                <div class="lnav">
+                    <ul>
+                        {foreach name='nav_classroom_child' item='v'}
+                        <li><a href="/Index/article/index/id/{$v.cat_id}">{$v.cat_name}</a></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+
+            <!--right-->
+            <div class="right1">
+                <div class="site">
+                    <span style="padding-left: 0;">当前位置:</span><a href="/">首页</a>&gt;<a href="/Index/article/index/id/10">孕婴课堂</a>&gt;<span style="color: #dd0083;">{$datamain.cat_name}</span>
+                </div>
+                <div class="div_clear"></div>
+                <div class="nomarg infobox">
+                    <dl class="infodl">
+                        <dt>
+                            <a href="/Index/article/show/id/{$data[0]['article_id']}" title="{$data[0]['title']}">
+                                <img src="http://www.bellabee.cn/{$data[0]['file_url']}" width="171" height="121" alt="{$data[0]['title']}"
+                                     title="{$data[0]['title']}" onerror="this.src='/public/static/images/nopic.jpg'">
+                            </a>
+                        </dt>
+                        <dd>
+                            <h4>
+                                <a href="/Index/article/show/id/{$data[0]['article_id']}" title="{$data[0]['title']}">{$data[0]['title']}</a>
+                            </h4>
+                            <div class="detail">
+                                {$content}
+                            </div>
+                            <a href="/Index/article/show/id/{$data[0]['article_id']}" title="{$data[0]['title']}" class="more">查看更多</a>
+                        </dd>
+                    </dl>
+                    <ul class="infolist">
+                        {foreach name='data' item='v'}
+                        <li>
+                            <a href="/Index/article/show/id/{$v['article_id']}" title="{$v['title']}" class="more1">查看全文</a>
+                            <a href="/Index/article/show/id/{$v['article_id']}" title="『{$v['title']}">{$v['title']}</a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    <div class="page">
+                        <div class="div_clear"></div>
+                            <div class="pager">
+                            <div id="AspNetPager1" class="page1"  style="margin-top:10px;">
+                                {$data->render()}
+                                <!--<a style="margin-right:5px;" href="javascript:;"><< 第一页</a>
+                                <a style="margin-right:5px;" href="javascript:;"><</a>
+                                <a style="margin-right:5px;" class="cpb" href="javascript:;">1</a>
+                                <a style="margin-right:5px;" href="javascript:;">></a>
+                                <a style="margin-right:5px;" href="javascript:;">末页 >></a>-->
+                            </div>
+                        </div>
+                        <div class="div_clear"></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- main end -->
+{include file='public/page_foot.htm'}
+</body>
+</html>

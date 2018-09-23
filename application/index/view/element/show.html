@@ -1,0 +1,113 @@
+{include file='public/page_header.htm'}
+<body>
+{include file='public/page_nav.htm'}
+<style>
+    .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}
+    .pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}
+    .pagination .active{background-color: #dd1a20;color: #fff;}
+    .pagination .disabled{color:#aaa;}
+</style>
+<!-- main -->
+<div class="main">
+    <!--BannerIn-->
+    <div class="infoban"><img src="/public/static/uploads/banner_source/20170915161500e5.jpg" height="249" alt="植物元素" title="植物元素" /></div>
+
+    <!--BannerIn-->
+    <div class="neiye">
+        <div class="wrap2">
+            <!--left-->
+            <div class="left">
+                <div class="lnav">
+                    <ul>
+                        <li  class="hover"><a href="/Index/element/index">植物元素表</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!--right-->
+            <div class="right1">
+                <div class="site">
+                    <span style="padding-left: 0;">当前位置:</span><a href="/">首页</a>&gt;<a href="/Index/element/index">植物元素表</a>
+                    &gt;<span style="color: #dd0083;">{$datamain.element_name}</span>
+                </div>
+                <div class="div_clear"></div>
+                <div class="nomarg infobox">
+                    <div class="newsDetail">
+                        <h1>{$datamain.element_name}</h1>
+                        <div class="content">
+                            <img src="http://www.bellabee.cn/data/elementlogo/{$datamain.element_logo}" alt="" onerror="this.src='/public/static/images/nopic.jpg'" />
+                            <p>{$datamain.element_desc}</p>
+                            <div class="show_text">
+                                <!--分享代码-->
+                                    <span>
+                                        <div class="fengxiao">分享到：</div>
+                                        <div class="bshare-custom">
+                                            <a class="bshare-qzone" title="分享到QQ空间"></a>
+                                            <a class="bshare-sinaminiblog" title="分享到新浪微博"></a>
+                                            <a class="bshare-renren" title="分享到人人网"></a>
+                                            <a class="bshare-qqmb" title="分享到腾讯微博"></a>
+                                            <a class="bshare-douban" title="分享到豆瓣"></a>
+                                            <a class="bshare-more bshare-more-icon more-style-addthis" title="更多平台"></a>
+                                            <span class="BSHARE_COUNT bshare-share-count">0</span>
+                                        </div>
+                                        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+                                        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                                    </span>
+                                <!--分页-->
+                                {if $data_per['have']=='yes'}
+                                <span>上一个：<a href="/Index/element/show/id/{$data_per.element_id}">{$data_per.element_name}</a></span>
+                                {/if}
+                                {if $data_next['have']=='yes'}
+                                <span>下一个：<a href="/Index/element/show/id/{$data_next.element_id}">{$data_next.element_name}</a></span>
+                                {/if}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="protab">
+                    <!--Ptblist-->
+                    <div class="protablist">
+                        <ul>
+                            <li class="hover">相关商品</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="protabcon">
+                    <div class="protabcon1">
+                        <?php $ii=0; ?>
+                        <?php $jj=0; ?>
+                        {foreach name='datagoods' item='v'}
+                        <?php $ii++;$jj++; ?>
+                        <?php
+                            if($ii==1){
+                                echo '<ul class="prolist">';
+                        }
+                        if($ii==3){
+                        $style_str=' style="margin:0px;"';
+                        }else{
+                        $style_str='';
+                        }
+                        ?>
+                        <li{$style_str}><a href="/Index/goods/index/id/{$v.goods_id}" title="{$v.goods_name}" target="_blank">
+                        <img src="http://www.bellabee.cn/{$v.goods_thumb}" width="173" height="211" alt="{$v.goods_name}" title="{$v.goods_name}" />
+                        <div class="proname">{$v['goods_name']|mb_substr=0,15,'utf-8'}<br /></div>
+                        </a></li>
+                        <?php
+                            if($ii==3 || $jj==count($datagoods)){
+                                echo '</ul>';
+                        $ii=0;
+                        }
+                        ?>
+                        {/foreach}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+    <!-- main end -->
+{include file='public/page_foot.htm'}
+</body>
+</html>

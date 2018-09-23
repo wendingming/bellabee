@@ -1,0 +1,58 @@
+{include file='public/page_header.htm'}
+<body>
+{include file='public/page_nav.htm'}
+<style>
+    .pagination{text-align:center;margin-top:20px;margin-bottom: 20px;}
+    .pagination li{margin:0px 10px; border:1px solid #e6e6e6;padding: 3px 8px;display: inline-block;}
+    .pagination .active{background-color: #dd1a20;color: #fff;}
+    .pagination .disabled{color:#aaa;}
+</style>
+<!-- main -->
+<div class="main">
+    <!--BannerIn-->
+    <div class="infoban"><img src="/public/static/uploads/banner_source/201709181037231e.jpg" height="249" alt="植物元素表" title="植物元素表" /></div>
+        <!--BannerIn-->
+        <div class="neiye">
+            <div class="wrap2">
+                <!--left-->
+                <div class="left">
+                    <div class="lnav">
+                        <ul>
+                            <li  class="hover"><a href="/Index/element/index">植物元素表</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--right-->
+                <div class="right1">
+                    <div class="site">
+                        <span style="padding-left: 0;">当前位置:</span><a href="/">首页</a>&gt;<a href="/Index/element/index">植物元素表</a>&gt;<span style="color: #dd0083;">查看植物元素</span>
+                    </div>
+                    <div class="active" style="width:763px;">
+                        {foreach name='data' item='v'}
+                        <dl class="activedl1">
+                            <dt>
+                                <a href="/Index/element/show/id/{$v.element_id}" title="{$v.element_name}">
+                                    <img src="http://www.bellabee.cn/data/elementlogo/{$v.element_logo}" width="202" height="136" alt="{$v.element_name}" title="{$v.element_name}" />
+                                </a>
+                            </dt>
+                            <dd>
+                                <div class="title1">
+                                    <h3 class="title2"><a href="/Index/element/show/id/{$v.element_id}" title="{$v.element_name}">{$v.element_name}</a></h3>
+                                </div>
+                            </dd>
+                        </dl>
+                        {/foreach}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- main end -->
+</div>
+<!-- main end -->
+{include file='public/page_foot.htm'}
+</body>
+</html>
